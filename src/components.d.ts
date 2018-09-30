@@ -12,40 +12,107 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface MyComponent {
-    'first': string;
-    'last': string;
-    'middle': string;
+  interface PresentableAddon {}
+  interface PresentableAddonAttributes extends StencilHTMLAttributes {}
+
+  interface PresentableFooter {}
+  interface PresentableFooterAttributes extends StencilHTMLAttributes {}
+
+  interface PresentableHeader {
+    'pageNumber': number;
   }
-  interface MyComponentAttributes extends StencilHTMLAttributes {
-    'first'?: string;
-    'last'?: string;
-    'middle'?: string;
+  interface PresentableHeaderAttributes extends StencilHTMLAttributes {
+    'pageNumber'?: number;
   }
+
+  interface PresentablePresentation {}
+  interface PresentablePresentationAttributes extends StencilHTMLAttributes {}
+
+  interface PresentableSlide {
+    'deselect': () => void;
+    'disablePager': boolean;
+    'select': () => void;
+  }
+  interface PresentableSlideAttributes extends StencilHTMLAttributes {
+    'disablePager'?: boolean;
+  }
+
+  interface PresentableToday {}
+  interface PresentableTodayAttributes extends StencilHTMLAttributes {}
 }
 
 declare global {
   interface StencilElementInterfaces {
-    'MyComponent': Components.MyComponent;
+    'PresentableAddon': Components.PresentableAddon;
+    'PresentableFooter': Components.PresentableFooter;
+    'PresentableHeader': Components.PresentableHeader;
+    'PresentablePresentation': Components.PresentablePresentation;
+    'PresentableSlide': Components.PresentableSlide;
+    'PresentableToday': Components.PresentableToday;
   }
 
   interface StencilIntrinsicElements {
-    'my-component': Components.MyComponentAttributes;
+    'presentable-addon': Components.PresentableAddonAttributes;
+    'presentable-footer': Components.PresentableFooterAttributes;
+    'presentable-header': Components.PresentableHeaderAttributes;
+    'presentable-presentation': Components.PresentablePresentationAttributes;
+    'presentable-slide': Components.PresentableSlideAttributes;
+    'presentable-today': Components.PresentableTodayAttributes;
   }
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLPresentableAddonElement extends Components.PresentableAddon, HTMLStencilElement {}
+  var HTMLPresentableAddonElement: {
+    prototype: HTMLPresentableAddonElement;
+    new (): HTMLPresentableAddonElement;
+  };
+
+  interface HTMLPresentableFooterElement extends Components.PresentableFooter, HTMLStencilElement {}
+  var HTMLPresentableFooterElement: {
+    prototype: HTMLPresentableFooterElement;
+    new (): HTMLPresentableFooterElement;
+  };
+
+  interface HTMLPresentableHeaderElement extends Components.PresentableHeader, HTMLStencilElement {}
+  var HTMLPresentableHeaderElement: {
+    prototype: HTMLPresentableHeaderElement;
+    new (): HTMLPresentableHeaderElement;
+  };
+
+  interface HTMLPresentablePresentationElement extends Components.PresentablePresentation, HTMLStencilElement {}
+  var HTMLPresentablePresentationElement: {
+    prototype: HTMLPresentablePresentationElement;
+    new (): HTMLPresentablePresentationElement;
+  };
+
+  interface HTMLPresentableSlideElement extends Components.PresentableSlide, HTMLStencilElement {}
+  var HTMLPresentableSlideElement: {
+    prototype: HTMLPresentableSlideElement;
+    new (): HTMLPresentableSlideElement;
+  };
+
+  interface HTMLPresentableTodayElement extends Components.PresentableToday, HTMLStencilElement {}
+  var HTMLPresentableTodayElement: {
+    prototype: HTMLPresentableTodayElement;
+    new (): HTMLPresentableTodayElement;
   };
 
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement
+    'presentable-addon': HTMLPresentableAddonElement
+    'presentable-footer': HTMLPresentableFooterElement
+    'presentable-header': HTMLPresentableHeaderElement
+    'presentable-presentation': HTMLPresentablePresentationElement
+    'presentable-slide': HTMLPresentableSlideElement
+    'presentable-today': HTMLPresentableTodayElement
   }
 
   interface ElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'presentable-addon': HTMLPresentableAddonElement;
+    'presentable-footer': HTMLPresentableFooterElement;
+    'presentable-header': HTMLPresentableHeaderElement;
+    'presentable-presentation': HTMLPresentablePresentationElement;
+    'presentable-slide': HTMLPresentableSlideElement;
+    'presentable-today': HTMLPresentableTodayElement;
   }
 
 

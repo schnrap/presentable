@@ -1,7 +1,8 @@
 import { Config } from '@stencil/core';
+var {sass} = require('@stencil/sass');
 
 export const config: Config = {
-  namespace: 'mycomponent',
+  namespace: 'presentable',
   outputTargets:[
     {
       type: 'dist'
@@ -10,5 +11,12 @@ export const config: Config = {
       type: 'www',
       serviceWorker: null
     }
+  ],
+  plugins: [
+    sass({
+      injectGlobalPaths: [
+        'src/globals/variables.scss'
+      ]
+    })
   ]
 };
