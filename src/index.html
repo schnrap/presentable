@@ -6,44 +6,65 @@
   <title>Stencil Component Starter</title>
   <script src="/build/presentable.js"></script>
 
+  <style>
+    presentable-slide>div{
+      width: 1024px;
+      margin: auto;
+    }
+  </style>
+
 </head>
 <body>
 
 
 <presentable-presentation>
   <presentable-header>
-    <style>
+    <template type="style">
+      div{
+        justify-content: space-between !important;
+        padding: 2px;
+      }
       .pager {
         width: 125px;
-        background: #a32638;
-        color: white;
         text-align: center;
         vertical-align: middle;
       }
-
       .description {
-        color: #a32638;
-        text-align: center;
+        color: black;
+        text-align: right;
         vertical-align: middle;
         padding-left: 1rem;
       }
-    </style>
+    </template>
     <template>
       <div>
         <div class="pager">Page {{page}}</div>
-        <div class="description">Web Components - Modularization of Web-based Information Systems | Raphael Schneider |
+        <div class="description">Presentable | A presentation built from web components |
           <presentable-today></presentable-today>
         </div>
       </div>
     </template>
   </presentable-header>
 
-  <presentable-slide disable-pager="true">
-    Slide 1
+  <presentable-footer>
+    <template type="style">
+      div {
+        background: red
+      }
+    </template>
+    <template>
+      <div>text {{page}}</div>
+    </template>
+  </presentable-footer>
+
+  <presentable-slide >
+    <div style="margin:auto; width: 600px">
+      <h1>Simple Slide</h1>
+    </div>
   </presentable-slide>
 
-  <presentable-slide>
-    Slide 2
+  <presentable-slide disable-pager="true">
+    <h2>Slide without Header</h2>
   </presentable-slide>
 
 </presentable-presentation>

@@ -49,11 +49,11 @@ export class PresentableHeaderComponent {
 
 
   render() {
-    this.parseContent(this.host.querySelector('template'));
+    this.parseContent(this.host.querySelector('template:not([type=style])'));
     if (this.content){
       return (
         <div >
-          <style innerHTML={this.host.querySelector('style').innerHTML}></style>
+          <style innerHTML={this.host.querySelector('template[type=style]').innerHTML}></style>
           <div class="container" innerHTML={this.content.innerHTML}>
           </div>
         </div>

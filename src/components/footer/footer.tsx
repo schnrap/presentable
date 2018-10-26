@@ -1,4 +1,4 @@
-import {Component, State, Element} from '@stencil/core';
+import {Component, State, Element, Prop} from '@stencil/core';
 
 @Component({
   tag: 'presentable-footer',
@@ -9,6 +9,9 @@ export class PresentableFooterComponent {
 
   @State()
   content: HTMLElement;
+
+  @Prop()
+  pageNumber: number = 0;
 
   @Element()
   private host: HTMLElement;
@@ -32,7 +35,7 @@ export class PresentableFooterComponent {
           const matches = textContent.match(regex) || [];
 
           matches && matches.forEach(match => {
-            const replacement = eval(match);
+            const replacement = (match === '{{page}}') ? this.pageNumber : eval(match);
 
             textContent = textContent.replace(match, replacement);
           });
@@ -47,9 +50,13 @@ export class PresentableFooterComponent {
   }
 
   render() {
+    this.parseContent(this.host.querySelector('template:not([type=style])'));
     if (this.content){
       return (
-        <div innerHTML={this.content.innerHTML}>
+        <div>
+          <style innerHTML={this.host.querySelector('template[type=style]').innerHTML}></style>
+          <div innerHTML={this.content.innerHTML}>
+          </div>
         </div>
       );
     }

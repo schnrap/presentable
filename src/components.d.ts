@@ -15,8 +15,12 @@ export namespace Components {
   interface PresentableAddon {}
   interface PresentableAddonAttributes extends StencilHTMLAttributes {}
 
-  interface PresentableFooter {}
-  interface PresentableFooterAttributes extends StencilHTMLAttributes {}
+  interface PresentableFooter {
+    'pageNumber': number;
+  }
+  interface PresentableFooterAttributes extends StencilHTMLAttributes {
+    'pageNumber'?: number;
+  }
 
   interface PresentableHeader {
     'pageNumber': number;
@@ -30,11 +34,13 @@ export namespace Components {
 
   interface PresentableSlide {
     'deselect': () => void;
-    'disablePager': boolean;
+    'noFooter': boolean;
+    'noHeader': boolean;
     'select': () => void;
   }
   interface PresentableSlideAttributes extends StencilHTMLAttributes {
-    'disablePager'?: boolean;
+    'noFooter'?: boolean;
+    'noHeader'?: boolean;
   }
 
   interface PresentableToday {}

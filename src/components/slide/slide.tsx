@@ -14,7 +14,10 @@ export class PresentableSlideComponent {
   private host: HTMLElement;
 
   @Prop()
-  disablePager:boolean;
+  noHeader:boolean;
+
+  @Prop()
+  noFooter:boolean;
 
 
   componentDidLoad() {

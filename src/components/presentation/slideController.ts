@@ -9,9 +9,22 @@ export class SlideController {
    */
   private index = 0;
   slides: any[];
+  get slide () {
+    return this.slides[this.index];
+  }
+
   get showPager () {
-    const slide = this.slides[this.index];
-    return slide && !slide.getAttribute('disable-pager');
+    return this.showHeader
+  }
+
+  get showHeader () {
+    const slide = this.slide;
+    return slide && !slide.getAttribute('no-header');
+  }
+
+  get showFooter () {
+    const slide = this.slide;
+    return slide && !slide.getAttribute('no-footer');
   }
 
   get pageNumber () {
@@ -33,10 +46,14 @@ export class SlideController {
   }
 
   resetSlides() {
+    this.setIndex(0);
+  }
+
+  setIndex(index: number = 0){
     this.slides.forEach(slide => slide.deselect());
-    this.slides[0] && this.slides[0].select();
-    this.index = 0;
-    this.animationController.setSlide(this.slides[0]);
+    this.slides[index] && this.slides[index].select();
+    this.index = index;
+    this.animationController.setSlide(this.slides[index]);
   }
 
   next() {
