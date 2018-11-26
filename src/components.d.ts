@@ -12,113 +12,91 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface PresentableAddon {}
-  interface PresentableAddonAttributes extends StencilHTMLAttributes {}
-
-  interface PresentableFooter {
-    'pageNumber': number;
+  interface PrPresentation {
+    'KEY_DOWN': any;
+    'KEY_NEXT': number[];
+    'KEY_PREV': any;
+    'KEY_UP': any;
+    'author': string;
+    'date': number;
+    'name': string;
+    'subtitle': string;
   }
-  interface PresentableFooterAttributes extends StencilHTMLAttributes {
-    'pageNumber'?: number;
-  }
-
-  interface PresentableHeader {
-    'pageNumber': number;
-  }
-  interface PresentableHeaderAttributes extends StencilHTMLAttributes {
-    'pageNumber'?: number;
-  }
-
-  interface PresentablePresentation {}
-  interface PresentablePresentationAttributes extends StencilHTMLAttributes {}
-
-  interface PresentableSlide {
-    'deselect': () => void;
-    'noFooter': boolean;
-    'noHeader': boolean;
-    'select': () => void;
-  }
-  interface PresentableSlideAttributes extends StencilHTMLAttributes {
-    'noFooter'?: boolean;
-    'noHeader'?: boolean;
+  interface PrPresentationAttributes extends StencilHTMLAttributes {
+    'KEY_DOWN'?: any;
+    'KEY_NEXT'?: number[];
+    'KEY_PREV'?: any;
+    'KEY_UP'?: any;
+    'author'?: string;
+    'date'?: number;
+    'name'?: string;
+    'subtitle'?: string;
   }
 
-  interface PresentableToday {}
-  interface PresentableTodayAttributes extends StencilHTMLAttributes {}
+  interface PrSection {
+    'hasNext': () => boolean;
+    'hasPrev': () => true | void;
+    'next': () => void;
+    'prev': () => void;
+    'setSelected': (value: boolean) => void;
+  }
+  interface PrSectionAttributes extends StencilHTMLAttributes {}
+
+  interface PrSlide {
+    'hasNext': () => void;
+    'hasPrev': () => void;
+    'next': () => void;
+    'prev': () => void;
+    'setSelected': (value: boolean) => void;
+    'url': string;
+  }
+  interface PrSlideAttributes extends StencilHTMLAttributes {
+    'url'?: string;
+  }
 }
 
 declare global {
   interface StencilElementInterfaces {
-    'PresentableAddon': Components.PresentableAddon;
-    'PresentableFooter': Components.PresentableFooter;
-    'PresentableHeader': Components.PresentableHeader;
-    'PresentablePresentation': Components.PresentablePresentation;
-    'PresentableSlide': Components.PresentableSlide;
-    'PresentableToday': Components.PresentableToday;
+    'PrPresentation': Components.PrPresentation;
+    'PrSection': Components.PrSection;
+    'PrSlide': Components.PrSlide;
   }
 
   interface StencilIntrinsicElements {
-    'presentable-addon': Components.PresentableAddonAttributes;
-    'presentable-footer': Components.PresentableFooterAttributes;
-    'presentable-header': Components.PresentableHeaderAttributes;
-    'presentable-presentation': Components.PresentablePresentationAttributes;
-    'presentable-slide': Components.PresentableSlideAttributes;
-    'presentable-today': Components.PresentableTodayAttributes;
+    'pr-presentation': Components.PrPresentationAttributes;
+    'pr-section': Components.PrSectionAttributes;
+    'pr-slide': Components.PrSlideAttributes;
   }
 
 
-  interface HTMLPresentableAddonElement extends Components.PresentableAddon, HTMLStencilElement {}
-  var HTMLPresentableAddonElement: {
-    prototype: HTMLPresentableAddonElement;
-    new (): HTMLPresentableAddonElement;
+  interface HTMLPrPresentationElement extends Components.PrPresentation, HTMLStencilElement {}
+  var HTMLPrPresentationElement: {
+    prototype: HTMLPrPresentationElement;
+    new (): HTMLPrPresentationElement;
   };
 
-  interface HTMLPresentableFooterElement extends Components.PresentableFooter, HTMLStencilElement {}
-  var HTMLPresentableFooterElement: {
-    prototype: HTMLPresentableFooterElement;
-    new (): HTMLPresentableFooterElement;
+  interface HTMLPrSectionElement extends Components.PrSection, HTMLStencilElement {}
+  var HTMLPrSectionElement: {
+    prototype: HTMLPrSectionElement;
+    new (): HTMLPrSectionElement;
   };
 
-  interface HTMLPresentableHeaderElement extends Components.PresentableHeader, HTMLStencilElement {}
-  var HTMLPresentableHeaderElement: {
-    prototype: HTMLPresentableHeaderElement;
-    new (): HTMLPresentableHeaderElement;
-  };
-
-  interface HTMLPresentablePresentationElement extends Components.PresentablePresentation, HTMLStencilElement {}
-  var HTMLPresentablePresentationElement: {
-    prototype: HTMLPresentablePresentationElement;
-    new (): HTMLPresentablePresentationElement;
-  };
-
-  interface HTMLPresentableSlideElement extends Components.PresentableSlide, HTMLStencilElement {}
-  var HTMLPresentableSlideElement: {
-    prototype: HTMLPresentableSlideElement;
-    new (): HTMLPresentableSlideElement;
-  };
-
-  interface HTMLPresentableTodayElement extends Components.PresentableToday, HTMLStencilElement {}
-  var HTMLPresentableTodayElement: {
-    prototype: HTMLPresentableTodayElement;
-    new (): HTMLPresentableTodayElement;
+  interface HTMLPrSlideElement extends Components.PrSlide, HTMLStencilElement {}
+  var HTMLPrSlideElement: {
+    prototype: HTMLPrSlideElement;
+    new (): HTMLPrSlideElement;
   };
 
   interface HTMLElementTagNameMap {
-    'presentable-addon': HTMLPresentableAddonElement
-    'presentable-footer': HTMLPresentableFooterElement
-    'presentable-header': HTMLPresentableHeaderElement
-    'presentable-presentation': HTMLPresentablePresentationElement
-    'presentable-slide': HTMLPresentableSlideElement
-    'presentable-today': HTMLPresentableTodayElement
+    'pr-presentation': HTMLPrPresentationElement
+    'pr-section': HTMLPrSectionElement
+    'pr-slide': HTMLPrSlideElement
   }
 
   interface ElementTagNameMap {
-    'presentable-addon': HTMLPresentableAddonElement;
-    'presentable-footer': HTMLPresentableFooterElement;
-    'presentable-header': HTMLPresentableHeaderElement;
-    'presentable-presentation': HTMLPresentablePresentationElement;
-    'presentable-slide': HTMLPresentableSlideElement;
-    'presentable-today': HTMLPresentableTodayElement;
+    'pr-presentation': HTMLPrPresentationElement;
+    'pr-section': HTMLPrSectionElement;
+    'pr-slide': HTMLPrSlideElement;
   }
 
 

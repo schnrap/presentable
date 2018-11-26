@@ -6,69 +6,46 @@
   <title>Stencil Component Starter</title>
   <script src="/build/presentable.js"></script>
 
-  <style>
-    presentable-slide>div{
-      width: 1024px;
-      margin: auto;
-    }
-  </style>
 
 </head>
 <body>
 
-
-<presentable-presentation>
-  <presentable-header>
-    <template type="style">
-      div{
-        justify-content: space-between !important;
-        padding: 2px;
-      }
-      .pager {
-        width: 125px;
-        text-align: center;
-        vertical-align: middle;
-      }
-      .description {
-        color: black;
-        text-align: right;
-        vertical-align: middle;
-        padding-left: 1rem;
-      }
-    </template>
-    <template>
-      <div>
-        <div class="pager">Page {{page}}</div>
-        <div class="description">Presentable | A presentation built from web components |
-          <presentable-today></presentable-today>
-        </div>
-      </div>
-    </template>
-  </presentable-header>
-
-  <presentable-footer>
-    <template type="style">
-      div {
-        background: red
-      }
-    </template>
-    <template>
-      <div>text {{page}}</div>
-    </template>
-  </presentable-footer>
-
-  <presentable-slide >
-    <div style="margin:auto; width: 600px">
-      <h1>Simple Slide</h1>
-      <presentable-include url="test.html"></presentable-include>
-    </div>
-  </presentable-slide>
-
-  <presentable-slide disable-pager="true">
-    <h2>Slide without Header</h2>
-  </presentable-slide>
-
-</presentable-presentation>
+<pr-presentation>
+  <pr-section>
+    <pr-slide>
+      <template>
+        <h1>Section 1</h1>
+      </template>
+    </pr-slide>
+    <pr-slide>
+      <template>
+        <h1>Slide 1.1</h1>
+      </template>
+    </pr-slide>
+    <pr-slide>
+      <template>
+        <h1>Slide 1.2</h1>
+      </template>
+    </pr-slide>
+  </pr-section>
+  <pr-section>
+    <pr-slide>
+      <template>
+        <h1>Section 2</h1>
+      </template>
+    </pr-slide>
+    <pr-slide>
+      <template>
+        <h1>Section 2.1</h1>
+      </template>
+    </pr-slide>
+    <pr-slide>
+      <template>
+        <h1>Section 2.2</h1>
+      </template>
+    </pr-slide>
+  </pr-section>
+</pr-presentation>
 
 </body>
 </html>
