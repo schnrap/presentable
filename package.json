@@ -1,6 +1,6 @@
 {
   "name": "@schnrap/presentable",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "A set of web components to create HTML presentations",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
