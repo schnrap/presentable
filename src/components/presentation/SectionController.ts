@@ -29,7 +29,7 @@ export class SectionController {
     } else if(this.sections.length > this.index +1) {
       this.select(this.index+1);
     } else {
-      console.error('last section reached', this.sections.length, this.index);
+      console.error('last section reached');
     }
   }
   public prev() {
@@ -37,8 +37,25 @@ export class SectionController {
       this.currentSection.prev();
     } else if(this.index > 0) {
       this.select(this.index-1);
+      this.currentSection.last();
     } else {
       console.error('first slide reached');
+    }
+  }
+
+  public nextSection() {
+    if (this.sections.length > this.index+1){
+      this.select(this.index+1);
+    } else {
+      console.error('last section reached');
+    }
+  }
+
+  public prevSection() {
+    if (this.index > 0){
+      this.select(this.index-1);
+    } else {
+      console.error('first section reached');
     }
   }
 

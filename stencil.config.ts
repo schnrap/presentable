@@ -12,6 +12,10 @@ export const config: Config = {
       serviceWorker: null
     }
   ],
+  globalStyle:'src/globals/uulm.scss',
+  copy: [
+    {src:'slide.html'}
+  ],
   plugins: [
     sass({
       injectGlobalPaths: [

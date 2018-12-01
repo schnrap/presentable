@@ -1,4 +1,5 @@
 import {PresentableSlideComponent} from "../slide/slide";
+import {FlowDirection} from "../slide/FlowDirection";
 
 export class SlideController {
 
@@ -50,10 +51,19 @@ export class SlideController {
     }
   }
 
+  public first(){
+    this.select(0);
+  }
+
+  public last() {
+    this.select(this.slides.length-1);
+  }
+
   public select(index){
+    const flowDirection = index === 0 ? FlowDirection.RIGHT : FlowDirection.DOWN;
     this.currentSlide && this.currentSlide.setSelected(false);
     this.index = index;
-    this.currentSlide.setSelected(true);
+    this.currentSlide.setSelected(true, flowDirection);
   }
 
   reset() {

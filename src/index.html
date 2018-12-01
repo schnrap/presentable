@@ -3,45 +3,103 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <title>Stencil Component Starter</title>
+  <title>Presentable Sample Presentation</title>
+
   <script src="/build/presentable.js"></script>
-
-
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="build/presentable.css">
 </head>
 <body>
 
-<pr-presentation>
+<pr-presentation disable-navigation animated>
+
+  <pr-section>
+    <pr-slide id="cover">
+      <template>
+        <h1>Presentable</h1>
+        <h2>a <u>web component library</u> for creating awesome presenations</h2>
+        <img src="https://picsum.photos/800/400?random" alt="">
+      </template>
+    </pr-slide>
+  </pr-section>
+
   <pr-section>
     <pr-slide>
       <template>
-        <h1>Section 1</h1>
+        <h2>{{slide}} Installation</h2>
+        <code>
+npm install @schnrap/presentable
+        </code>
+        <p>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        </p>
       </template>
     </pr-slide>
     <pr-slide>
       <template>
-        <h1>Slide 1.1</h1>
-      </template>
-    </pr-slide>
-    <pr-slide>
-      <template>
-        <h1>Slide 1.2</h1>
+        <h2>{{slide}} Basic Usage</h2>
+        <code>
+&lt;pr-presentation&gt;
+  &lt;pr-section&gt;
+    &lt;pr-slide&gt;
+      &lt;template&gt;
+        &lt;h1&gt;Hello World&lt;/h1&gt;
+      &lt;/template&gt;
+    &lt;/pr-slide&gt;
+  &lt;/pr-section&gt;
+&lt;/pr-presentation&gt;
+        </code>
+        <p>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+        </p>
       </template>
     </pr-slide>
   </pr-section>
   <pr-section>
     <pr-slide>
       <template>
-        <h1>Section 2</h1>
+        <h1>{{section}} The Components</h1>
+        <p>
+          lorem ipsum
+        </p>
+        <div>
+          <button onclick="document.presentation.slide('cmp-presentation')">&lt;pr-presentation&gt;</button>
+          <button onclick="document.presentation.slide('cmp-section')">&lt;pr-section&gt;</button>
+          <button onclick="document.presentation.slide('cmp-slide')">&lt;pr-slide&gt;</button>
+        </div>
+
+      </template>
+    </pr-slide>
+    <pr-slide id="cmp-presentation">
+      <template>
+        <h2>{{slide}} pr-presentation</h2>
+      </template>
+    </pr-slide>
+    <pr-slide id="cmp-section">
+      <template>
+        <h2>{{slide}} pr-section</h2>
+
+        <button onclick="document.presentation.slide('templating')">Templating</button>
+      </template>
+    </pr-slide>
+    <pr-slide id="cmp-slide">
+      <template>
+        <h2>{{slide}} pr-slide</h2>
+      </template>
+    </pr-slide>
+
+
+  </pr-section>
+
+  <pr-section>
+    <pr-slide>
+      <template>
+        <h1>{{section}} Advanced Functionality</h1>
       </template>
     </pr-slide>
     <pr-slide>
       <template>
-        <h1>Section 2.1</h1>
-      </template>
-    </pr-slide>
-    <pr-slide>
-      <template>
-        <h1>Section 2.2</h1>
+        <h2>{{slide}} Templating</h2>
       </template>
     </pr-slide>
   </pr-section>

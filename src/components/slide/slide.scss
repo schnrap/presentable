@@ -1,6 +1,42 @@
-.slide{
+@keyframes flow-in-left {
+  from {transform: translate(100vw,0)}
+  to {transform: translate(0,0)}
+}
+@keyframes flow-in-right {
+  from {transform: translate(-100vw,0)}
+  to {transform: translate(0,0)}
+}
+@keyframes flow-in-up {
+  from {transform: translate(0,100vh)}
+  to {transform: translate(0,0)}
+}
+@keyframes flow-in-down {
+  from {transform: translate(0,-100vh)}
+  to {transform: translate(0,0)}
+}
+
+.slide {
   display: none;
+
+  &.pr-flow-left.selected{
+    animation-name: flow-in-right;
+    animation-duration: .3s;
+  }
+  &.pr-flow-right.selected{
+    animation-name: flow-in-left;
+    animation-duration: .3s;
+  }
+  &.pr-flow-up.selected{
+    animation-name: flow-in-down;
+    animation-duration: .3s;
+  }
+  &.pr-flow-down.selected{
+    animation-name: flow-in-up;
+    animation-duration: .3s;
+  }
 }
 .selected{
   display:block;
 }
+
+

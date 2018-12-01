@@ -30,6 +30,8 @@ export class PresentableSectionComponent {
   @Method() hasPrev(){return this.controller.hasPrev();}
   @Method() next()   {this.controller.next();}
   @Method() prev ()  {this.controller.prev();}
+  @Method() last() {this.controller.last();}
+  @Method() first() {this.controller.first()}
 
   componentWillLoad() {
     this.controller = new SlideController(this.host);

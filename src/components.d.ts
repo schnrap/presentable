@@ -8,6 +8,9 @@
 import '@stencil/core';
 
 
+import {
+  FlowDirection,
+} from './components/slide/FlowDirection';
 
 
 export namespace Components {
@@ -17,9 +20,12 @@ export namespace Components {
     'KEY_NEXT': number[];
     'KEY_PREV': any;
     'KEY_UP': any;
+    'animated': boolean;
     'author': string;
     'date': number;
+    'disableNavigation': boolean;
     'name': string;
+    'slide': (id: string) => void;
     'subtitle': string;
   }
   interface PrPresentationAttributes extends StencilHTMLAttributes {
@@ -27,15 +33,19 @@ export namespace Components {
     'KEY_NEXT'?: number[];
     'KEY_PREV'?: any;
     'KEY_UP'?: any;
+    'animated'?: boolean;
     'author'?: string;
     'date'?: number;
+    'disableNavigation'?: boolean;
     'name'?: string;
     'subtitle'?: string;
   }
 
   interface PrSection {
+    'first': () => void;
     'hasNext': () => boolean;
     'hasPrev': () => true | void;
+    'last': () => void;
     'next': () => void;
     'prev': () => void;
     'setSelected': (value: boolean) => void;
@@ -43,14 +53,16 @@ export namespace Components {
   interface PrSectionAttributes extends StencilHTMLAttributes {}
 
   interface PrSlide {
+    'flowIn': boolean;
     'hasNext': () => void;
     'hasPrev': () => void;
     'next': () => void;
     'prev': () => void;
-    'setSelected': (value: boolean) => void;
+    'setSelected': (value: boolean, flowDirection?: FlowDirection) => void;
     'url': string;
   }
   interface PrSlideAttributes extends StencilHTMLAttributes {
+    'flowIn'?: boolean;
     'url'?: string;
   }
 }

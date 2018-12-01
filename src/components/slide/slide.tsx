@@ -1,11 +1,12 @@
-import {Component, Method, Prop, Element, State, Watch} from "@stencil/core";
+import {Component, Element, Method, Prop, State, Watch} from "@stencil/core";
 import {AnimationController} from "./AnimationController";
 import {TemplateParser} from "./TemplateParser";
+import {FlowDirection} from "./FlowDirection";
 
 @Component({
   tag: 'pr-slide',
   styleUrl: 'slide.scss',
-  shadow: true
+  shadow: false
 })
 export class PresentableSlideComponent {
 
@@ -14,6 +15,9 @@ export class PresentableSlideComponent {
 
   @Prop()
   url: string;
+
+  @Prop()
+  flowIn: boolean;
 
   @State()
   content: HTMLElement;
@@ -24,6 +28,23 @@ export class PresentableSlideComponent {
   @Element()
   host: HTMLElement;
 
+  private _flowDirection: FlowDirection;
+  get flowDirection() {
+    if (this.flowIn) {
+      switch (this._flowDirection) {
+        case FlowDirection.DOWN:
+          return 'pr-flow-down';
+        case FlowDirection.UP:
+          return 'pr-flow-up';
+        case FlowDirection.RIGHT:
+          return 'pr-flow-right';
+        case FlowDirection.LEFT:
+          return 'pr-flow-left';
+      }
+    }
+    return '';
+  }
+
   componentWillLoad() {
     this.controller = new AnimationController(this.host);
     this.parser = new TemplateParser((content) => {
@@ -33,6 +54,8 @@ export class PresentableSlideComponent {
     if (!this.url) {
       const template = this.host.querySelector('template');
       this.parser.setTemplate(template);
+    } else {
+      this.urlChanged();
     }
   }
 
@@ -55,8 +78,9 @@ export class PresentableSlideComponent {
   }
 
   @Method()
-  setSelected(value: boolean) {
+  setSelected(value: boolean, flowDirection?: FlowDirection) {
     this.controller.reset();
+    this._flowDirection = flowDirection || this._flowDirection;
     this.selected = value;
   }
 
@@ -67,7 +91,7 @@ export class PresentableSlideComponent {
 
   render() {
     return (
-      <div class={this.selected ? 'selected slide' : 'slide'}>
+      <div class={this.selected ? 'selected slide ' + this.flowDirection : 'slide ' + this.flowDirection}>
         <div innerHTML={this.content && this.content.innerHTML}></div>
       </div>);
   }

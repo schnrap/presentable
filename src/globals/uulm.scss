@@ -1,0 +1,60 @@
+*{
+  font-family: 'Open Sans', sans-serif;
+}
+
+.slide{
+  width: 800px;
+  max-width: 90vw;
+  margin: auto;
+
+  h1{
+
+  }
+
+  h2{
+    color: rgb(88, 88, 88);
+  }
+
+  h1 + h2{
+    margin-top: -1em;
+  }
+
+  img{
+    width: 100%;
+    height: auto;
+  }
+
+  code{
+    display: block;
+    font-family: monospace;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: lightgray;
+    border-radius: .5rem;
+    white-space: pre;
+  }
+
+  button{
+    display: inline-block;
+    margin: 1em;
+    border-radius: 3px;
+    background: #434d5a;
+    border: none;
+    padding: 1em;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    width: 30%;
+    cursor: pointer;
+
+    transition:
+      all 0.2s ease,
+      background-color 0.2s ease-in 0.15s,
+      box-shadow 0.2s ease-in 0.15s,
+      color 0s ease;
+
+    &:hover{
+      background: lighten(#434d5a, 25);
+    }
+  }
+}
