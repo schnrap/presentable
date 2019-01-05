@@ -1,17 +1,22 @@
+export class AnimationController {
 
-export class AnimationController{
+  public readonly ANIMATION_TRIGGER = 'pr-animate';
+  public readonly ANIMATION_FLAG = 'pr-animated';
+  public readonly ANIMATION_CUSTOM_ATTRIBUTE = 'pr-animate-classes';
 
   index: number = -1;
+
   //animations: HTMLElement[];
 
-  constructor(private host: HTMLElement){}
+  constructor(private host: HTMLElement) {
+  }
 
   get animations() {
-    return Array.from(this.host.querySelectorAll('.pr-animate')) as any[]
+    return Array.from(this.host.querySelectorAll('.' + this.ANIMATION_TRIGGER)) as any[]
   }
 
   public hasNext() {
-    return this.hasAnimations() && this.animations[this.index+1];
+    return this.hasAnimations() && this.animations[this.index + 1];
   }
 
   public hasAnimations() {
@@ -19,27 +24,40 @@ export class AnimationController{
   }
 
   public hasPrev() {
-    return this.index > 0;
+    return this.hasAnimations() && this.animations[this.index-1]
   }
 
-  public prev () {
-    if(!this.hasPrev()) console.error('no prev animation available');
+  public prev() {
+    if (!this.hasPrev()) console.error('no prev animation available');
 
-    this.animations[this.index].classList.remove('pr-animated');
+    this.resetAnimate(this.animations[this.index]);
     this.index--;
   }
 
   public next() {
-    if(!this.hasNext()) console.error('no next animation available');
+    if (!this.hasNext()) console.error('no next animation available');
 
-    console.log(this.index+1, this.animations.length);
-    this.animations[this.index+1].classList.add('pr-animated');
+    this.animate(this.animations[this.index + 1]);
     this.index++;
   }
 
-  public reset () {
+  animate(elem: HTMLElement) {
+    const customAnimationClasses = elem.getAttribute(this.ANIMATION_CUSTOM_ATTRIBUTE);
+    const animatedClass = customAnimationClasses || this.ANIMATION_FLAG;
+
+    elem.classList.add(...animatedClass.split(' '));
+  }
+
+  resetAnimate(elem: HTMLElement) {
+    const customAnimationClasses = elem.getAttribute(this.ANIMATION_CUSTOM_ATTRIBUTE);
+    const animatedClass = customAnimationClasses || this.ANIMATION_FLAG;
+
+    elem.classList.remove(...animatedClass.split(' '));
+  }
+
+  public reset() {
     this.animations.forEach(animation => {
-      animation.classList.remove('pr-animated');
+      this.resetAnimate(animation);
     });
     this.index = -1;
   }
