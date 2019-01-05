@@ -38,6 +38,7 @@ export namespace Components {
     'date'?: number;
     'disableNavigation'?: boolean;
     'name'?: string;
+    'onOnSlideChange'?: (event: CustomEvent) => void;
     'subtitle'?: string;
   }
 
@@ -54,8 +55,8 @@ export namespace Components {
 
   interface PrSlide {
     'flowIn': boolean;
-    'hasNext': () => void;
-    'hasPrev': () => void;
+    'hasNext': () => boolean;
+    'hasPrev': () => boolean;
     'next': () => void;
     'prev': () => void;
     'setSelected': (value: boolean, flowDirection?: FlowDirection) => void;

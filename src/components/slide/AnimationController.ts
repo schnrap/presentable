@@ -2,18 +2,20 @@
 export class AnimationController{
 
   index: number = -1;
-  animations: HTMLElement[];
+  //animations: HTMLElement[];
 
-  constructor(private host: HTMLElement){
-    this.init();
+  constructor(private host: HTMLElement){}
+
+  get animations() {
+    return Array.from(this.host.querySelectorAll('.pr-animate')) as any[]
   }
 
-  private init() {
-    this.animations = Array.from(this.host.querySelectorAll('.pr-animate')) as any[];
+  public hasNext() {
+    return this.hasAnimations() && this.animations[this.index+1];
   }
 
-  public hasNext(){
-    return this.index && this.animations.length > this.index - 1;
+  public hasAnimations() {
+    return !!this.animations.length;
   }
 
   public hasPrev() {
@@ -30,6 +32,7 @@ export class AnimationController{
   public next() {
     if(!this.hasNext()) console.error('no next animation available');
 
+    console.log(this.index+1, this.animations.length);
     this.animations[this.index+1].classList.add('pr-animated');
     this.index++;
   }

@@ -86,8 +86,8 @@ export class PresentableSlideComponent {
 
   @Method() next() { this.controller.next();}
   @Method() prev() { this.controller.prev()}
-  @Method() hasNext(){ this.controller.hasNext()}
-  @Method() hasPrev(){ this.controller.hasPrev()}
+  @Method() hasNext(){ return this.controller.hasNext()}
+  @Method() hasPrev(){ return this.controller.hasPrev()}
 
   render() {
     return (

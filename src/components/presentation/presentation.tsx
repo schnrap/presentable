@@ -1,5 +1,6 @@
-import {Component, Prop, Element, Listen, Method} from '@stencil/core';
+import {Component, Prop, Element, Listen, Method, Event} from '@stencil/core';
 import {SectionController} from "./SectionController";
+import {EventEmitter} from "../../../node_modules/@stencil/core/dist/client/declarations/stencil.core";
 
 /**
  *
@@ -36,6 +37,9 @@ export class PresentablePresentationComponent {
   @Element()
   host: HTMLStencilElement;
 
+  @Event()
+  onSlideChange: EventEmitter;
+
   controller: SectionController;
 
   @Listen('body:keydown')
@@ -48,7 +52,9 @@ export class PresentablePresentationComponent {
       this.controller.prevSection();
     } else if ((this.KEY_DOWN.indexOf(event.keyCode) !== -1)) {
       this.controller.nextSection();
-    }
+    } else
+      return;
+    this.onSlideChange.emit();
   }
 
 
